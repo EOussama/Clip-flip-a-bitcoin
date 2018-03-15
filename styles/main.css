@@ -67,7 +67,7 @@ div#coin span {
 div#result {
 	position: relative;
 	width: 100px;
-	padding: 15px;
+	padding: 5px 0px 0px;
 	margin: auto;
 	text-align: center;
 	font-size: 20px;
@@ -83,6 +83,14 @@ div#result {
 	transition-duration: .5s;
 }
 
+div#result div#label { padding-bottom: 6px; }
+
+div#result div#stats {
+	padding: 10px;
+	font-size: 12px;
+	color:  var(--primaryColor);
+	background-color: var(--secondaryColor);
+}
 /*-------------------------------[Animation]-----------------------------*/
 
 .animate {
