@@ -6,28 +6,43 @@ window.addEventListener('load', function() { "use strict";
 		resultStats = document.getElementById('stats'),
 		result = ['Tail', 'Head'];
 	
-	var score = { tails : 0, heads : 0 }
+	var
+		score = { tails : 0, heads : 0 },
+		flipping = false,
+		rand = 0;
 	
 	coin.addEventListener('click', function() {
-		if(this.classList.contains('animate') === false) {
-			this.classList.add('animate');
-			resultPanel.style.opacity = '0';
-			resultPanel.style.top = '-20px';
+		if(flipping === false) {
+			rand += 180 * Math.floor((Math.random() * 10) + 3);
+			flipping = true;
+			coin.style.transform = `rotateY(${rand}deg)`;
+			hideResult();
+			
+			console.log(rand, Math.floor(rand / 180));
 			
 			setTimeout(function() {
-				let rand = Math.floor(Math.random() * 2);
 				
-				if(rand == 0)
+				if(((rand / 180) % 2 === 0))
 					score.tails++;
 				else
 					score.heads++;
 				
-				resultLabel.textContent = result[rand];
+				resultLabel.textContent = result[+ ((rand / 180) % 2 !== 0)];
 				resultStats.textContent = `T - ${score.tails} / H - ${score.heads}`;
-				resultPanel.style.top = '0px';
-				resultPanel.style.opacity = '1';
-				coin.classList.remove('animate');
+				
+				flipping = false;
+				showResult();
 			}, 2000);
 		}
 	});
+											
+	function showResult() {
+		resultPanel.style.top = '0px';
+		resultPanel.style.opacity = '1';
+	}
+
+	function hideResult() {
+		resultPanel.style.opacity = '0';
+		resultPanel.style.top = '-20px';
+	}
 });
