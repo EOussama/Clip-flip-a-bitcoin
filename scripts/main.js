@@ -1,5 +1,6 @@
 window.addEventListener('load', function() { "use strict";
 	const
+		coins = document.querySelectorAll('div.coin-side'),
 		coin = document.getElementById('coin'),
 		resultPanel = document.getElementById('result'),
 		resultLabel = document.getElementById('label'),
@@ -11,29 +12,29 @@ window.addEventListener('load', function() { "use strict";
 		flipping = false,
 		rand = 0;
 	
-	coin.addEventListener('click', function() {
-		if(flipping === false) {
-			rand += 180 * Math.floor((Math.random() * 10) + 3);
-			flipping = true;
-			coin.style.transform = `rotateY(${rand}deg)`;
-			hideResult();
-			
-			console.log(rand, Math.floor(rand / 180));
-			
-			setTimeout(function() {
+	coins.forEach(_coin => {
+		_coin.addEventListener('click', function() {
+			if(flipping === false) {
+				rand += 180 * Math.floor((Math.random() * 10) + 3);
+				flipping = true;
+				coin.style.transform = `rotateY(${rand}deg)`;
+				hideResult();
 				
-				if(((rand / 180) % 2 === 0))
-					score.tails++;
-				else
-					score.heads++;
-				
-				resultLabel.textContent = result[+ ((rand / 180) % 2 !== 0)];
-				resultStats.textContent = `T - ${score.tails} / H - ${score.heads}`;
-				
-				flipping = false;
-				showResult();
-			}, 2000);
-		}
+				setTimeout(function() {
+					
+					if(((rand / 180) % 2 === 0))
+						score.tails++;
+					else
+						score.heads++;
+					
+					resultLabel.textContent = result[+ ((rand / 180) % 2 !== 0)];
+					resultStats.textContent = `T - ${score.tails} / H - ${score.heads}`;
+					
+					flipping = false;
+					showResult();
+				}, 2000);
+			}
+		});
 	});
 											
 	function showResult() {
