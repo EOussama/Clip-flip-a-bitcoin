@@ -112,7 +112,7 @@ div#coin div.coin-side:hover {
 	background-color: var(--color-primary-stale);
 }
 
-div#coin span, div#coin i {
+div#coin span, div#coin img {
 	color: var(--color-secondary);
 	font-size: 90px;
 	font-weight: bold;
@@ -124,6 +124,10 @@ div#coin span, div#coin i {
 	        transform: translate(-50%, -50%);
 }
 
+div#coin img {
+	opacity: .2;
+	width: 70px;
+}
 
 div.coin-front {
 	-webkit-transform: translateX(50%);
