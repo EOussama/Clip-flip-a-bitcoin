@@ -20,13 +20,10 @@
         <meta name="author" content="EOussama">
         <meta name="application-name" content="Clip - flip a bitcoin">
         <meta name="description" content="A simple coin flipping simulator.">
-        <meta name="keywords" content="coin flip, gamble, random, chances">
+        <meta name="keywords" content="coin flip, bet, random, chances, bitcoin">
 
         <!-- Roboto font. -->
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-
-        <!-- Font awesome. -->
-        <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
 
         <!-- The main stylesheets. -->
         <link rel="stylesheet" href="assets/css/main.css">
@@ -47,21 +44,26 @@
 		
 		<main>
 			<div class="scene">
+
+                <!-- The coin. -->
 				<div id="coin">
 					<div class="coin-side coin-front">
 						<span>&#8383;</span>
-					</div>
+                    </div>
+                    
 					<div class="coin-side coin-back">
 						<i class="fa fa-smile"></i>
 					</div>
 				</div>
 			</div>
-			
+            
+            <!-- The results panel. -->
 			<div id="result">
 				<div id="label">Head/Tail</div>
 				<div id="stats">H - 0 / T - 0</div>
-			</div>
-			<p><i class="fas fa-info-circle"></i> Click on the &#8383;itcoin in order to flip it!</p>
+            </div>
+            
+			<p id="info">Click on the &#8383;itcoin in order to flip it!</p>
 		</main>
 
         <!-- The main javascript file. -->

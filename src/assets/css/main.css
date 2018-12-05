@@ -9,137 +9,161 @@
 * The main stylesheet of the app.
 */
 
-* {
+:root {
+    --color-primary: gold;
+    --color-primary-dark: #ad9200;
+    --color-primary-pale: #ebc900;
+    --color-primary-stale: #ffde2a;
+	--color-secondary: #fff2aa;
+    --color-secondary-light: #faebc6;
+    --color-light: #b7b7b7;
+
+    font-family: "Roboto", sans-serif;
     margin: 0;
     padding: 0;
-	
-	font-family: "Roboto", sans-serif;
 }
 
-body { background-color: rgb(255, 252, 232); }
-
-:root {
-	--primaryColor: gold;
-	--secondaryColor: rgb(255, 242, 170);
-	--backColor: #faebc6;
+body {
+    background-color: #fffce8;
 }
 
-/*--------------------------------[Header]------------------------------*/
+/* #region Header */
 header {
+	background-color: var(--color-secondary-light);
+    border-bottom: 8px solid var(--color-primary);
+	-webkit-box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1);
+	        box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1);
 	padding: 80px 50px;
-	
-	border-bottom: 8px solid var(--primaryColor);
-	
-	background-color: var(--backColor);
-	
-	box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
-	color: var(--primaryColor);
-	
-	text-align: center;
+	color: var(--color-primary);
 	font-size: 70px;
 	font-weight: bold;
-	text-shadow: 1px 1px 2px #ad9200;
+	text-align: center;
+	text-shadow: 1px 1px 2px var(--color-primary-dark);
+}
+/* #endregion */
+
+/* #region Main */
+main {
+    padding: 50px;
 }
 
-/*--------------------------------[Main]--------------------------------*/
-main { padding: 50px; }
-
 main p {
+	color: var(--color-light);
 	position: relative;
-	top: 100px;
-	
-	color: #b7b7b7;
-	
 	text-align: center;
+    top: 100px;
 }
 
 div.scene {
+    margin: 50px auto;
+    padding: 20px;
 	width: 350px;
-	padding: 20px;
-	margin: 50px auto;
 }
 
 div#coin {
+  	display: -webkit-box;
+  	display: -ms-flexbox;
   	display: flex;
-	justify-content: center;
-	
-  	transform-style: preserve-3d;
-	
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+  	-webkit-transform-style: preserve-3d;
+  	        transform-style: preserve-3d;
+	-webkit-transition-property: -webkit-transform;
+	transition-property: -webkit-transform;
 	transition-property: transform;
-	transition-duration: 2s;
+	transition-property: transform, -webkit-transform;
+	-webkit-transition-duration: 2s;
+	        transition-duration: 2s;
 }
 
 div#coin div.coin-side {
-	position: relative;
-	width: 150px;
-	height: 150px;
-	
+	-webkit-backface-visibility: hidden;
+	        backface-visibility: hidden;
+	background-color: var(--color-primary);
 	border-radius: 75px;
-	background-color: var(--primaryColor);
-	
-	box-shadow: inset 5px 0px 0px #ebc900, inset 0px 5px 0px #ebc900, inset -5px 0px 0px #ebc900, inset 0px -5px 0px #ebc900, 3px 3px 2px rgba(0, 0, 0, 0.1);
-	user-select: none;
+	-webkit-box-shadow: inset 5px 0px 0px var(--color-primary-pale), inset 0px 5px 0px var(--color-primary-pale), inset -5px 0px 0px var(--color-primary-pale), inset 0px -5px 0px var(--color-primary-pale), 3px 3px 2px rgba(0, 0, 0, 0.1);
+	        box-shadow: inset 5px 0px 0px var(--color-primary-pale), inset 0px 5px 0px var(--color-primary-pale), inset -5px 0px 0px var(--color-primary-pale), inset 0px -5px 0px var(--color-primary-pale), 3px 3px 2px rgba(0, 0, 0, 0.1);
 	cursor: pointer;
-	backface-visibility: hidden;
-	
+	height: 150px;
+	position: relative;
+	-webkit-transition-property: background-color;
 	transition-property: background-color;
-	transition-duration: .5s;
+	-webkit-transition-duration: .5s;
+	        transition-duration: .5s;
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
+	width: 150px;
 }
 
-div#coin div.coin-side:hover { background-color: #ffde2a; }
+div#coin div.coin-side:hover {
+    background-color: var(--color-primary-stale);
+}
 
 div#coin span, div#coin i {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	
-	color: var(--secondaryColor);
-	
-	text-align: center;
+	color: var(--color-secondary);
 	font-size: 90px;
 	font-weight: bold;
+	left: 50%;
+    position: absolute;
+	text-align: center;
+	-webkit-transform: translate(-50%, -50%);
+	        transform: translate(-50%, -50%);
+    top: 50%;
 }
 
+div.coin-front {
+    -webkit-transform: translateX(50%);
+            transform: translateX(50%);
+}
 
-div.coin-front { transform: translateX(50%); }
-
-div.coin-back { transform: translateX(-50%) rotateY(180deg); }
-
+div.coin-back {
+    -webkit-transform: rotateY(180deg) translateX(-50%);
+            transform: rotateY(180deg) translateX(-50%);
+}
 
 div#result {
-	position: relative;
-	width: 100px;
-	padding: 5px 0px 0px;
-	margin: auto;
-	
-	border: 3px solid #ebc900;
+	background-color: var(--color-primary);
+	border: 3px solid var(--color-primary-pale);
 	border-radius: 5px;
-	
-	background-color: var(--primaryColor);
-	color: var(--secondaryColor);
-	text-align: center;
+	-webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+	        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+	color: var(--color-secondary);
 	font-size: 20px;
 	font-weight: bold;
-	
-	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
-	user-select: none;
+	margin: auto;
 	opacity: 0;
-	
+	padding: 5px 0px 0px;
+	position: relative;
+	text-align: center;
+	-webkit-transition-property: opacity, top;
 	transition-property: opacity, top;
-	transition-duration: .5s;
+	-webkit-transition-duration: .5s;
+	        transition-duration: .5s;
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
+    width: 100px;
 }
 
-div#result div#label { padding-bottom: 6px; }
+div#result div#label {
+    padding-bottom: 6px;
+}
 
 div#result div#stats {
-	padding: 10px;
-	
-	background-color: var(--secondaryColor);
-	color:  var(--primaryColor);
-	
+    background-color: var(--color-secondary);
+	color:  var(--color-primary);
 	font-size: 12px;
+	padding: 10px;
 }
+
+p#info {
+    margin: 50px 0;
+}
+/* #endregion */
