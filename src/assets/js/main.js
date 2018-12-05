@@ -12,16 +12,16 @@
 
 "use strict";
 
-window.addEventListener('load', function() { "use strict";
+window.addEventListener('load', function() {
 	const
+		result = ['Tail', 'Head'],
 		coins = document.querySelectorAll('div.coin-side'),
 		coin = document.getElementById('coin'),
 		resultPanel = document.getElementById('result'),
 		resultLabel = document.getElementById('label'),
-		resultStats = document.getElementById('stats'),
-		result = ['Tail', 'Head'];
+		resultStats = document.getElementById('stats');
 	
-	var
+	let
 		score = { tails : 0, heads : 0 },
 		flipping = false,
 		rand = 0;
@@ -50,14 +50,18 @@ window.addEventListener('load', function() { "use strict";
 			}
 		});
 	});
-											
+	
+	/**
+	 * Show the results panel.
+	 */
 	function showResult() {
-		resultPanel.style.top = '0px';
-		resultPanel.style.opacity = '1';
+		resultPanel.classList.add('active');
 	}
 
+	/**
+	 * Hide the results panel.
+	 */
 	function hideResult() {
-		resultPanel.style.opacity = '0';
-		resultPanel.style.top = '-20px';
+		resultPanel.classList.remove('active');
 	}
 });

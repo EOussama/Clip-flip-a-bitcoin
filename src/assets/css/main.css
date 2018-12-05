@@ -12,7 +12,7 @@
 :root {
     --color-primary: gold;
     --color-primary-dark: #ad9200;
-    --color-primary-pale: #ebc900;
+    --color-primary-pale: var(--color-primary);
     --color-primary-stale: #ffde2a;
 	--color-secondary: #fff2aa;
     --color-secondary-light: #faebc6;
@@ -58,26 +58,33 @@ main p {
 }
 
 div.scene {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
     margin: 50px auto;
     padding: 20px;
 	width: 350px;
 }
 
 div#coin {
-  	display: -webkit-box;
-  	display: -ms-flexbox;
-  	display: flex;
-	-webkit-box-pack: center;
-	    -ms-flex-pack: center;
-	        justify-content: center;
-  	-webkit-transform-style: preserve-3d;
-  	        transform-style: preserve-3d;
-	-webkit-transition-property: -webkit-transform;
-	transition-property: -webkit-transform;
-	transition-property: transform;
-	transition-property: transform, -webkit-transform;
-	-webkit-transition-duration: 2s;
-	        transition-duration: 2s;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+  	-webkit-box-pack: center;
+  	    -ms-flex-pack: center;
+  	        justify-content: center;
+  	-webkit-transition-duration: 2s;
+  	        transition-duration: 2s;
+  	-webkit-transition-property: -webkit-transform;
+  	transition-property: -webkit-transform;
+  	transition-property: transform;
+  	transition-property: transform, -webkit-transform;
+	-webkit-transform-style: preserve-3d;
+	        transform-style: preserve-3d;
 }
 
 div#coin div.coin-side {
@@ -85,8 +92,8 @@ div#coin div.coin-side {
 	        backface-visibility: hidden;
 	background-color: var(--color-primary);
 	border-radius: 75px;
-	-webkit-box-shadow: inset 5px 0px 0px var(--color-primary-pale), inset 0px 5px 0px var(--color-primary-pale), inset -5px 0px 0px var(--color-primary-pale), inset 0px -5px 0px var(--color-primary-pale), 3px 3px 2px rgba(0, 0, 0, 0.1);
-	        box-shadow: inset 5px 0px 0px var(--color-primary-pale), inset 0px 5px 0px var(--color-primary-pale), inset -5px 0px 0px var(--color-primary-pale), inset 0px -5px 0px var(--color-primary-pale), 3px 3px 2px rgba(0, 0, 0, 0.1);
+	-webkit-box-shadow: inset 5px 0px 0px var(--color-primary), inset 0px 5px 0px var(--color-primary), inset -5px 0px 0px var(--color-primary), inset 0px -5px 0px var(--color-primary), 3px 3px 2px rgba(0, 0, 0, 0.1);
+	        box-shadow: inset 5px 0px 0px var(--color-primary), inset 0px 5px 0px var(--color-primary), inset -5px 0px 0px var(--color-primary), inset 0px -5px 0px var(--color-primary), 3px 3px 2px rgba(0, 0, 0, 0.1);
 	cursor: pointer;
 	height: 150px;
 	position: relative;
@@ -102,7 +109,7 @@ div#coin div.coin-side {
 }
 
 div#coin div.coin-side:hover {
-    background-color: var(--color-primary-stale);
+	background-color: var(--color-primary-stale);
 }
 
 div#coin span, div#coin i {
@@ -110,21 +117,22 @@ div#coin span, div#coin i {
 	font-size: 90px;
 	font-weight: bold;
 	left: 50%;
-    position: absolute;
+	position: absolute;
 	text-align: center;
+	top: 50%;
 	-webkit-transform: translate(-50%, -50%);
 	        transform: translate(-50%, -50%);
-    top: 50%;
 }
 
+
 div.coin-front {
-    -webkit-transform: translateX(50%);
-            transform: translateX(50%);
+	-webkit-transform: translateX(50%);
+	        transform: translateX(50%);
 }
 
 div.coin-back {
-    -webkit-transform: rotateY(180deg) translateX(-50%);
-            transform: rotateY(180deg) translateX(-50%);
+	-webkit-transform: translateX(-50%) rotateY(180deg);
+	        transform: translateX(-50%) rotateY(180deg);
 }
 
 div#result {
@@ -150,6 +158,10 @@ div#result {
 	    -ms-user-select: none;
 	        user-select: none;
     width: 100px;
+}
+
+div#result.active {
+	opacity: 1;
 }
 
 div#result div#label {
